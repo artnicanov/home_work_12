@@ -24,8 +24,10 @@ def add_post(post):
 	posts = load_post()  # здесь у нас список словарей
 	posts.append(post)  # добавляем в него наш пост
 	save_posts_to_json(posts)
+	return post # функция должна обязательно возвращать пердаваемый ее пост для отображения на странице шаблона "пост добавлен"
+
 
 def save_posts_to_json(posts, path='posts.json'):
 	"""сохраняем пост"""
-	with open(path, "w", encoding='utf-8') as file: # открываем файл на добавление и вносим в него новый пост
+	with open(path, "w", encoding='utf-8') as file: # открываем файл на запись и вносим в него новый пост
 		json.dump(posts, file, ensure_ascii=False)
