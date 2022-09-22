@@ -19,7 +19,7 @@ def add_post_page():
 	if picture.filename.split('.')[-1] not in ['jpg', 'png']:
 		return 'неверное расширение файла'
 	try:
-		picture_path = save_picture(picture) # по этому пути сохраняем и показываем картинку
+		picture_path = '/' + save_picture(picture) # по этому пути сохраняем и показываем картинку
 	except FileNotFoundError:
 		return "Файл не найден"
 	post = add_post({'pic': picture_path, "content": content})
