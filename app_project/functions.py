@@ -21,13 +21,14 @@ def save_picture(picture):
 	return path
 
 def add_post(post):
+	"""добавляет пост в файлик и возвращает его для показа на странице"""
 	posts = load_post()  # здесь у нас список словарей
 	posts.append(post)  # добавляем в него наш пост
-	save_posts_to_json(posts)
+	save_posts_to_json(posts) # вызываем функцию, которая запишет файл с новым постом
 	return post # функция должна обязательно возвращать пердаваемый ее пост для отображения на странице шаблона "пост добавлен"
-
 
 def save_posts_to_json(posts, path='posts.json'):
 	"""сохраняем пост"""
-	with open(path, "w", encoding='utf-8') as file: # открываем файл на запись и вносим в него новый пост
-		json.dump(posts, file, ensure_ascii=False)
+	with open(path, "w", encoding='utf-8') as file: # открываем файл на запись и записываем  его уже с новым постом
+# ensure_ascii=False для того чтобы распозналась киррилица, indent=4 это отступ, для того чтобы файл оставался в читабельном виде
+		json.dump(posts, file, ensure_ascii=False, indent=4)
