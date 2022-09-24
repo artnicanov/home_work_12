@@ -7,19 +7,17 @@
 </head>
 <body>
 <main>
-
     <a href="/" class="link">Назад</a>
-
     <h1>Посты по запросу "{{ query }}"</h1>
-    {% for post in posts %}
     <div class="post">
+    {% for post in posts %}
+    <!-- posts - это все что нашлось в @main_blueprint.route('/search/'), а post каждый словарик в отдельности -->
         <img src="{{ post.pic }}" width="100%" alt="">
-        <p>{{ post.content }}</p>
+        <p>{{ post.content }}</p> <!-- в переменную передается название словарь.ключ -->
     </div>
-    <hr>
     {% endfor %}
+    <hr>
     <a href="/post" class="button">Добавить пост</a>
-
 </main>
 </body>
 </html>
